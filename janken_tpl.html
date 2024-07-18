@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<script src="js/jquery-2.1.3.min.js"></script>
+<link rel="stylesheet" href="css/sample.css">
+<title>じゃんけん</title>
+</head>
+<body>
+
+<header>
+  <h1>じゃんけんゲーム</h1>
+</header>
+
+<main>
+   <p>選んでください</p>
+  <ul>
+    <li id="gu_btn"><img src="./janken_gu.png" alt="グー"></li>
+    <li id="cho_btn"><img src="./janken_choki.png" alt="チョキ"></li>
+    <li id="par_btn"><img src="./janken_pa.png" alt="パー"></li>
+  </ul>
+  <P>コンピュータの出した手は？</P>
+  
+  <div><span id="pc_hands"></span></div>
+  <div id="judgment"></div>
+  
+
+  <p><button type="button" id="resetbutton" >もう一度遊ぶ</button></p>
+</main>
+
+<footer></footer>
+<script>
+//じゃんけん用のSCRIPTを書いてください
+
+// グー
+$("#gu_btn").on("click",function(){
+ const r1 = Math.random()*3; //小数点0.000000~0.999999
+ const n1 = Math.ceil(r1); //繰り上げ0.01→1
+ console.log(n1);
+ if(n1 == 1){
+    $("#pc_hands").html('<img src="janken_gu.png">'); //文字を上書き
+    $("#pc_hands").css("width","10%");
+ }
+ if(n1 == 2){
+    $("#pc_hands").html('<img src="janken_choki.png">');
+ }
+ if(n1 == 3){
+    $("#pc_hands").html('<img src="janken_pa.png">');
+ }
+//  結果
+ if(n1 == 1){
+    $("#judgment").html("あいこ"); //文字を上書き
+    $("#judgment").css("text-align","center");
+    $("#judgment").css("font-size","100px");
+ }
+ if(n1 == 2){
+    $("#judgment").html("あなたの勝ちです");
+    $("#judgment").css("text-align","center");
+    $("#judgment").css("font-size","100px");
+ }
+ if(n1 == 3){
+    $("#judgment").html("あなたの負けです");
+    $("#judgment").css("text-align","center");
+    $("#judgment").css("font-size","100px");
+ }
+});
+
+// チョキ
+$("#cho_btn").on("click",function(){
+ const r2 = Math.random()*3; //小数点0.000000~0.999999
+ const n2 = Math.ceil(r2); //繰り上げ0.01→1
+ console.log(n2);
+ if(n2 == 1){
+    $("#pc_hands").html('<img src="janken_gu.png">'); //文字を上書き
+ }
+ if(n2 == 2){
+    $("#pc_hands").html('<img src="janken_choki.png">');
+ }
+ if(n2 == 3){
+    $("#pc_hands").html('<img src="janken_pa.png">');
+   
+ }
+// 結果
+ if(n2 == 1){
+    $("#judgment").html("あなたの負けです");//文字を上書き
+    $("#judgment").css("text-align","center");
+    $("#judgment").css("font-size","100px"); 
+ }
+ if(n2 == 2){
+    $("#judgment").html("あいこ");
+    $("#judgment").css("text-align","center");
+    $("#judgment").css("font-size","100px");  
+ }
+ if(n2 == 3){
+    $("#judgment").html("あなたの勝ちです");
+    $("#judgment").css("text-align","center");
+    $("#judgment").css("font-size","100px"); 
+ }
+});
+
+// パー
+$("#par_btn").on("click",function(){
+ const r3 = Math.random()*3; //小数点0.000000~0.999999
+ const n3 = Math.ceil(r3); //繰り上げ0.01→1
+ console.log(n3);
+ if(n3 == 1){
+    $("#pc_hands").html('<img src="janken_gu.png">'); //文字を上書き
+    
+ }
+ if(n3 == 2){
+    $("#pc_hands").html('<img src="janken_choki.png">');
+ }
+ if(n3 == 3){
+    $("#pc_hands").html('<img src="janken_pa.png">');
+   
+ }
+// 結果
+ if(n3 == 1){
+    $("#judgment").html("あなたの勝ちです"); //文字を上書き
+    $("#judgment").css("text-align","center");
+    $("#judgment").css("font-size","100px"); 
+ }
+ if(n3 == 2){
+    $("#judgment").html("あなたの負けです");
+    $("#judgment").css("text-align","center");
+    $("#judgment").css("font-size","100px"); 
+ }
+ if(n3 == 3){
+    $("#judgment").html("あいこ");
+    $("#judgment").css("text-align","center");
+    $("#judgment").css("font-size","100px"); 
+ }
+});
+   
+
+$("#gu_btn").on("click",function(){
+   const count = 0;
+   count ++;
+   $("gameCount").text(count + "回");
+});
+
+$("#resetbutton").on("click",function(){
+   location.reload();
+})
+
+
+    
+    
+    
+    
+
+</script>
+</body>
+</html>
