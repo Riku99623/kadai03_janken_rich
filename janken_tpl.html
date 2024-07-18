@@ -16,11 +16,13 @@
 <main> 
    <p class="select">選んでください</p>
   <ul>
-    <li id="gu_btn"><img src="./janken_gu.png" alt="グー"></li>
-    <li id="cho_btn"><img src="./janken_choki.png" alt="チョキ"></li>
-    <li id="par_btn"><img src="./janken_pa.png" alt="パー"></li>
+   <div class="selecthands">
+    <button type="button" id="gu_btn"><img src="./janken_gu.png" alt="グー"></button>
+    <button type="button" id="cho_btn"><img src="./janken_choki.png" alt="チョキ"></button>
+    <button type="button" id="par_btn"><img src="./janken_pa.png" alt="パー"></button>
+   </div>
   </ul>
-  <P>コンピュータの出した手は？</P>
+  <P>コンピュータの出す手は？</P>
   
   <div><span id="pc_hands">
    <img src="./janken_gu.png" alt="" class="img">
@@ -37,7 +39,8 @@
    <p>勝率：<span id="win-rate">0</span>%</p>
  </div>
 
-  <p><button type="button" id="resetbutton" >もう一度遊ぶ</button></p>
+ <p><button type="button" id="onemore" >もう一回</button></p>
+  <p><button type="button" id="resetbutton" >リセット</button></p>
 </main>
 
 <footer></footer>
@@ -195,6 +198,36 @@ function showNextImg() {
     .fadeOut(70, showNextImg);
 }
 showNextImg();
+
+$("#onemore").on("click",function(){
+   function showNextImg() {
+  imgIndex++;
+  imgs
+    .eq(imgIndex % imgs.length)
+    .fadeIn(25)
+    .fadeOut(80, showNextImg);
+}
+showNextImg();
+});
+
+$("#gu_btn").on("click",function(){
+  $("#gu_btn").prop("disabled", true)
+  $("#cho_btn").prop("disabled", true)
+  $("#par_btn").prop("disabled", true)
+});
+
+$("#cho_btn").on("click",function(){
+  $("#gu_btn").prop("disabled", true)
+  $("#cho_btn").prop("disabled", true)
+  $("#par_btn").prop("disabled", true)
+});
+
+$("#par_btn").on("click",function(){
+  $("#gu_btn").prop("disabled", true)
+  $("#cho_btn").prop("disabled", true)
+  $("#par_btn").prop("disabled", true)
+});
+
 
 $("#resetbutton").on("click",function(){
    location.reload();
