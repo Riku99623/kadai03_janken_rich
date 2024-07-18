@@ -10,6 +10,7 @@ header{
     text-align: center;
     font-weight: bold;
     color: white;
+    font-size: 100px;
 }
 main{
     font-weight: bold;
@@ -18,6 +19,9 @@ main{
 footer{
     background-color: #fff;
     text-align: center;
+}
+.select{
+    font-size: 100px;
 }
 p{
     font-size:200%;
