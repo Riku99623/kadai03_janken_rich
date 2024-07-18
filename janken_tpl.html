@@ -22,7 +22,11 @@
   </ul>
   <P>コンピュータの出した手は？</P>
   
-  <div><span id="pc_hands"></span></div>
+  <div><span id="pc_hands">
+   <img src="./janken_gu.png" alt="" class="img">
+   <img src="./janken_choki.png" alt="" class="img">
+   <img src="./janken_pa.png" alt="" class="img">
+  </span></div>
   <div id="judgment"></div>
   
   <div class="score">
@@ -178,6 +182,19 @@ $("#par_btn").on("click",function(){
  }
 });
 
+
+const imgs = $(".img");
+let imgIndex = -1;
+imgs.hide();
+
+function showNextImg() {
+  imgIndex++;
+  imgs
+    .eq(imgIndex % imgs.length)
+    .fadeIn(20)
+    .fadeOut(70, showNextImg);
+}
+showNextImg();
 
 $("#resetbutton").on("click",function(){
    location.reload();
