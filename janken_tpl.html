@@ -13,7 +13,7 @@
   <h1>じゃんけんゲーム</h1>
 </header>
 
-<main>
+<main> 
    <p>選んでください</p>
   <ul>
     <li id="gu_btn"><img src="./janken_gu.png" alt="グー"></li>
@@ -25,6 +25,13 @@
   <div><span id="pc_hands"></span></div>
   <div id="judgment"></div>
   
+  <div class="score">
+   <h2>今回のスコア</h2>
+   <p>対戦回数：<span id="count">0</span></p>  
+   <p>勝利回数：<span id="win-count">0</span></p>
+   <p>敗北回数：<span id="lose-count">0</span></p>
+   <p>勝率：<span id="win-rate">0</span>%</p>
+ </div>
 
   <p><button type="button" id="resetbutton" >もう一度遊ぶ</button></p>
 </main>
@@ -32,6 +39,12 @@
 <footer></footer>
 <script>
 //じゃんけん用のSCRIPTを書いてください
+
+let count =0;
+let winStreakCount = 0;
+let winCount = 0;
+let loseCount = 0;
+let winrate = 0;
 
 // グー
 $("#gu_btn").on("click",function(){
@@ -41,28 +54,41 @@ $("#gu_btn").on("click",function(){
  if(n1 == 1){
     $("#pc_hands").html('<img src="janken_gu.png">'); //文字を上書き
     $("#pc_hands").css("width","10%");
- }
- if(n1 == 2){
-    $("#pc_hands").html('<img src="janken_choki.png">');
- }
- if(n1 == 3){
-    $("#pc_hands").html('<img src="janken_pa.png">');
- }
-//  結果
- if(n1 == 1){
     $("#judgment").html("あいこ"); //文字を上書き
     $("#judgment").css("text-align","center");
     $("#judgment").css("font-size","100px");
+    count ++;
+    $("#count").html(count);
+    winrate = (winCount/count)*100;
+    const percent = Math.ceil(winrate);
+    $("#win-rate").html(percent);
  }
  if(n1 == 2){
+    $("#pc_hands").html('<img src="janken_choki.png">');
     $("#judgment").html("あなたの勝ちです");
     $("#judgment").css("text-align","center");
     $("#judgment").css("font-size","100px");
+    count ++;
+    $("#count").html(count);
+    winCount ++;
+    $("#win-count").html(winCount);
+    winrate = (winCount/count)*100;
+    const percent = Math.ceil(winrate);
+    $("#win-rate").html(percent);
+
  }
  if(n1 == 3){
+    $("#pc_hands").html('<img src="janken_pa.png">');
     $("#judgment").html("あなたの負けです");
     $("#judgment").css("text-align","center");
     $("#judgment").css("font-size","100px");
+    count ++;
+    $("#count").html(count);
+    loseCount ++;
+    $("#lose-count").html(loseCount);
+    winrate = (winCount/count)*100;
+    const percent = Math.ceil(winrate);
+    $("#win-rate").html(percent);
  }
 });
 
@@ -73,31 +99,41 @@ $("#cho_btn").on("click",function(){
  console.log(n2);
  if(n2 == 1){
     $("#pc_hands").html('<img src="janken_gu.png">'); //文字を上書き
+    $("#judgment").html("あなたの負けです");//文字を上書き
+    $("#judgment").css("text-align","center");
+    $("#judgment").css("font-size","100px");
+    count ++;
+    $("#count").html(count);
+    loseCount ++;
+    $("#lose-count").html(loseCount);
+    winrate = (winCount/count)*100;
+    const percent = Math.ceil(winrate);
+    $("#win-rate").html(percent);
  }
  if(n2 == 2){
     $("#pc_hands").html('<img src="janken_choki.png">');
- }
- if(n2 == 3){
-    $("#pc_hands").html('<img src="janken_pa.png">');
-   
- }
-// 結果
- if(n2 == 1){
-    $("#judgment").html("あなたの負けです");//文字を上書き
-    $("#judgment").css("text-align","center");
-    $("#judgment").css("font-size","100px"); 
- }
- if(n2 == 2){
     $("#judgment").html("あいこ");
     $("#judgment").css("text-align","center");
     $("#judgment").css("font-size","100px");  
+    count ++;
+    $("#count").html(count);
+    winrate = (winCount/count)*100;
+    const percent = Math.ceil(winrate);
+    $("#win-rate").html(percent);
  }
  if(n2 == 3){
+    $("#pc_hands").html('<img src="janken_pa.png">');
     $("#judgment").html("あなたの勝ちです");
     $("#judgment").css("text-align","center");
     $("#judgment").css("font-size","100px"); 
- }
-});
+    count ++;
+    $("#count").html(count);
+    winCount ++;
+    $("#win-count").html(winCount);
+    winrate = (winCount/count)*100;
+    const percent = Math.ceil(winrate);
+    $("#win-rate").html(percent);
+}});
 
 // パー
 $("#par_btn").on("click",function(){
@@ -106,49 +142,47 @@ $("#par_btn").on("click",function(){
  console.log(n3);
  if(n3 == 1){
     $("#pc_hands").html('<img src="janken_gu.png">'); //文字を上書き
-    
- }
- if(n3 == 2){
-    $("#pc_hands").html('<img src="janken_choki.png">');
- }
- if(n3 == 3){
-    $("#pc_hands").html('<img src="janken_pa.png">');
-   
- }
-// 結果
- if(n3 == 1){
     $("#judgment").html("あなたの勝ちです"); //文字を上書き
     $("#judgment").css("text-align","center");
     $("#judgment").css("font-size","100px"); 
+    count ++;
+    $("#count").html(count);
+    winCount ++;
+    $("#win-count").html(winCount);
+    winrate = (winCount/count)*100;
+    const percent = Math.ceil(winrate);
+    $("#win-rate").html(percent);
  }
  if(n3 == 2){
+    $("#pc_hands").html('<img src="janken_choki.png">');
     $("#judgment").html("あなたの負けです");
     $("#judgment").css("text-align","center");
-    $("#judgment").css("font-size","100px"); 
+    $("#judgment").css("font-size","100px");
+    count ++;
+    $("#count").html(count);
+    loseCount ++;
+    $("#lose-count").html(loseCount);
+    winrate = (winCount/count)*100;
+    const percent = Math.ceil(winrate);
+    $("#win-rate").html(percent);
  }
  if(n3 == 3){
+    $("#pc_hands").html('<img src="janken_pa.png">');
     $("#judgment").html("あいこ");
     $("#judgment").css("text-align","center");
     $("#judgment").css("font-size","100px"); 
+    count ++;
+    $("#count").html(count);
+    winrate = (winCount/count)*100;
+    const percent = Math.ceil(winrate);
+    $("#win-rate").html(percent);
  }
 });
-   
 
-$("#gu_btn").on("click",function(){
-   const count = 0;
-   count ++;
-   $("gameCount").text(count + "回");
-});
 
 $("#resetbutton").on("click",function(){
    location.reload();
-})
-
-
-    
-    
-    
-    
+})   
 
 </script>
 </body>
