@@ -25,12 +25,15 @@
   <P>コンピュータの出す手は？</P>
   
   <div><span id="pc_hands">
-   <img src="./janken_gu.png" alt="" class="img">
-   <img src="./janken_choki.png" alt="" class="img">
-   <img src="./janken_pa.png" alt="" class="img">
+   <p class="img"><img src="./janken_gu.png" alt=""></p>
+   <p class="img"><img src="./janken_choki.png" alt=""></p>
+   <p class="img"><img src="./janken_pa.png" alt=""></p>
+
   </span></div>
   <div id="judgment"></div>
   
+<p></p>
+
   <div class="score">
    <h2>今回のスコア</h2>
    <p>対戦回数：<span id="count">0</span></p>  
@@ -39,7 +42,7 @@
    <p>勝率：<span id="win-rate">0</span>%</p>
  </div>
 
- <p><button type="button" id="onemore" >もう一回</button></p>
+  <p><button type="button" id="resultmenu" >次の勝負！</button></p>
   <p><button type="button" id="resetbutton" >リセット</button></p>
 </main>
 
@@ -199,34 +202,13 @@ function showNextImg() {
 }
 showNextImg();
 
-$("#onemore").on("click",function(){
-   function showNextImg() {
-  imgIndex++;
-  imgs
-    .eq(imgIndex % imgs.length)
-    .fadeIn(25)
-    .fadeOut(80, showNextImg);
-}
-showNextImg();
-});
-
-$("#gu_btn").on("click",function(){
+//無効化
+$("#gu_btn,#cho_btn,#par_btn").on("click",function(){
   $("#gu_btn").prop("disabled", true)
   $("#cho_btn").prop("disabled", true)
   $("#par_btn").prop("disabled", true)
 });
 
-$("#cho_btn").on("click",function(){
-  $("#gu_btn").prop("disabled", true)
-  $("#cho_btn").prop("disabled", true)
-  $("#par_btn").prop("disabled", true)
-});
-
-$("#par_btn").on("click",function(){
-  $("#gu_btn").prop("disabled", true)
-  $("#cho_btn").prop("disabled", true)
-  $("#par_btn").prop("disabled", true)
-});
 
 
 $("#resetbutton").on("click",function(){

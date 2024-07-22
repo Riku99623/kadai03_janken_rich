@@ -50,7 +50,18 @@ $("#pull").on("click",function(){
 });
 
 
+const imgs = $(".img");
+let imgIndex = -1;
+imgs.hide();
 
+function showNextImg() {
+  imgIndex++;
+  imgs
+    .eq(imgIndex % imgs.length)
+    .fadeIn(20)
+    .fadeOut(70, showNextImg);
+}
+showNextImg();
 
 
 
